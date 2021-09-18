@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:screen_layout/src/device_utils.dart';
 import 'package:screen_layout/src/enums.dart';
 
 // Base
@@ -9,22 +10,25 @@ abstract class BaseScreenState<W extends StatefulWidget> extends State<W>
   get orientation;
 }
 
+abstract class BaseWidgetState<W extends StatelessWidget> implements BaseState {
+}
+
 abstract class BaseState {
   Widget buildMobilePortraitLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 
   Widget buildMobileLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 
   Widget buildTabletPortraitLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 
   Widget buildTabletLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 
   Widget buildDesktopPortraitLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 
   Widget buildDesktopLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils);
 }

@@ -7,62 +7,66 @@ import 'package:screen_layout/src/enums.dart';
 /// and user can build portrait design in [buildPortraitLayout]
 /// and landscape design in [buildLandscapeLayout]
 
-// ignore: must_be_immutable
-abstract class AppWidgetState extends StatelessWidget implements BaseState {
-  late Size screenSize;
-
-  AppWidgetState({Key? key}) : super(key: key);
+abstract class AppWidgetState extends StatelessWidget
+    implements BaseWidgetState {
+  const AppWidgetState({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, boxConstraints) {
       MediaQueryData mediaQuery = MediaQuery.of(context);
-      screenSize = MediaQuery.of(context).size;
-      DeviceScreenType deviceType = getDeviceType(mediaQuery);
+      DeviceScreenType _deviceType = getDeviceType(mediaQuery);
+      Orientation _orientation = mediaQuery.orientation;
+      Size _screenSize = mediaQuery.size;
 
-      if (deviceType == DeviceScreenType.desktop) {
+      DeviceUtils _deviceUtils = DeviceUtils(
+          screenType: _deviceType,
+          screenSize: _screenSize,
+          orientation: _orientation);
+
+      if (_deviceType == DeviceScreenType.desktop) {
         return MediaQuery.of(context).orientation == Orientation.portrait
-            ? buildDesktopPortraitLayout(context, deviceType)
-            : buildDesktopLandscapeLayout(context, deviceType);
-      } else if (deviceType == DeviceScreenType.tablet) {
+            ? buildDesktopPortraitLayout(context, _deviceUtils)
+            : buildDesktopLandscapeLayout(context, _deviceUtils);
+      } else if (_deviceType == DeviceScreenType.tablet) {
         return MediaQuery.of(context).orientation == Orientation.portrait
-            ? buildTabletPortraitLayout(context, deviceType)
-            : buildTabletLandscapeLayout(context, deviceType);
+            ? buildTabletPortraitLayout(context, _deviceUtils)
+            : buildTabletLandscapeLayout(context, _deviceUtils);
       } else {
         return MediaQuery.of(context).orientation == Orientation.portrait
-            ? buildMobilePortraitLayout(context, deviceType)
-            : buildMobileLandscapeLayout(context, deviceType);
+            ? buildMobilePortraitLayout(context, _deviceUtils)
+            : buildMobileLandscapeLayout(context, _deviceUtils);
       }
     });
   }
 
   @override
   Widget buildMobileLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType) {
-    return buildMobilePortraitLayout(context, deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils) {
+    return buildMobilePortraitLayout(context, deviceUtils);
   }
 
   @override
   Widget buildTabletPortraitLayout(
-      BuildContext context, DeviceScreenType deviceScreenType) {
-    return buildMobileLandscapeLayout(context, deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils) {
+    return buildMobileLandscapeLayout(context, deviceUtils);
   }
 
   @override
   Widget buildTabletLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType) {
-    return buildTabletPortraitLayout(context, deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils) {
+    return buildTabletPortraitLayout(context, deviceUtils);
   }
 
   @override
   Widget buildDesktopPortraitLayout(
-      BuildContext context, DeviceScreenType deviceScreenType) {
-    return buildTabletLandscapeLayout(context, deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils) {
+    return buildTabletLandscapeLayout(context, deviceUtils);
   }
 
   @override
   Widget buildDesktopLandscapeLayout(
-      BuildContext context, DeviceScreenType deviceScreenType) {
-    return buildDesktopPortraitLayout(context, deviceScreenType);
+      BuildContext context, DeviceUtils deviceUtils) {
+    return buildDesktopPortraitLayout(context, deviceUtils);
   }
 }

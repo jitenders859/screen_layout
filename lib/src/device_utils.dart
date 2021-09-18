@@ -2,6 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:screen_layout/src/enums.dart';
 
+class DeviceUtils {
+  final DeviceScreenType screenType;
+  final Size screenSize;
+  final Orientation orientation;
+
+  DeviceUtils(
+      {required this.screenType,
+      required this.screenSize,
+      required this.orientation});
+}
+
 DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
   double deviceWidth = mediaQuery.size.shortestSide;
 
