@@ -21,7 +21,7 @@ DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
   }
 
   // If no user defined definitions are passed through use the defaults
-  if (deviceWidth > 950) {
+  if (deviceWidth > 1050) {
     return DeviceScreenType.desktop;
   }
 
@@ -29,9 +29,9 @@ DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
     return DeviceScreenType.tablet;
   }
 
-  // if (deviceWidth < 300) {
-  //   return DeviceScreenType.watch;
-  // }
+  if (deviceWidth < 280) {
+    return DeviceScreenType.watch;
+  }
 
   return DeviceScreenType.mobile;
 }

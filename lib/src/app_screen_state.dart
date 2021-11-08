@@ -85,4 +85,7 @@ abstract class AppScreenState<W extends StatefulWidget>
 
   @override
   get screenSize => MediaQuery.of(context).size;
+
+  @override
+  get deviceType => getDeviceType(MediaQuery.of(context));
 }

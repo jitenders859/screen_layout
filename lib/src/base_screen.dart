@@ -8,6 +8,8 @@ abstract class BaseScreenState<W extends StatefulWidget> extends State<W>
   get screenSize;
 
   get orientation;
+
+  get deviceType;
 }
 
 abstract class BaseWidgetState<W extends StatelessWidget> implements BaseState {
