@@ -64,3 +64,10 @@ class Adaptive {
   /// Calculates the sp (Scalable Pixel) depending on the device's screen size
   static double sp(num scalablePixel) => scalablePixel.sp;
 }
+
+class ScreenHelpers {
+  bool get isMobile => (Device.screenType == ScreenType.mobile);
+  bool get isDesktop => (Device.screenType == ScreenType.desktop);
+  bool get isWatch => (Device.screenType == ScreenType.watch);
+  bool get isTablet => (Device.screenType == ScreenType.tablet);
+}
