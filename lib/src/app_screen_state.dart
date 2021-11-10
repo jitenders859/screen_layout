@@ -10,7 +10,6 @@ abstract class AppScreenState<W extends StatefulWidget>
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (_context, boxConstraints) {
       DeviceUtils _deviceUtils = DeviceUtils(
-          deviceType: Device.deviceType,
           screenType: Device.screenType,
           screenSize: Size(boxConstraints.maxWidth, boxConstraints.maxHeight),
           orientation: Device.orientation);

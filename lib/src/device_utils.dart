@@ -4,11 +4,9 @@ class DeviceUtils {
   final ScreenType screenType;
   final Size screenSize;
   final Orientation orientation;
-  final DeviceType deviceType;
 
   DeviceUtils(
       {required this.screenType,
-      required this.deviceType,
       required this.screenSize,
       required this.orientation});
 }

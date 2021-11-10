@@ -13,3 +13,7 @@ Added types for screensize, orientation and deviceType
 ## 0.0.4
 
 Added ResponsiveLayout Builder, DeviceType,  ScreenType, and DeviceExt
+
+## 0.0.5
+
+Added isDesktop, isTablet, isWatch and isMobile support in ScreenExt

@@ -2,7 +2,7 @@ part of screen_layout;
 
 /// Provides `Context`, `Orientation`, and `ScreenType` parameters to the builder function
 typedef ResponsiveLayoutType = Widget Function(
-    BuildContext, Orientation, ScreenType, DeviceType);
+    BuildContext, Orientation, ScreenType);
 
 /// A widget that gets the device's details like orientation and constraints
 ///
@@ -18,8 +18,7 @@ class ResponsiveLayout extends StatelessWidget {
     return LayoutBuilder(builder: (_context, constraints) {
       return OrientationBuilder(builder: (__context, orientation) {
         Device.setScreenSize(constraints, orientation);
-        return builder(
-            context, orientation, Device.screenType, Device.deviceType);
+        return builder(context, orientation, Device.screenType);
       });
     });
   }
