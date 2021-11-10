@@ -81,11 +81,11 @@ abstract class AppScreenState<W extends StatefulWidget>
   }
 
   @override
-  get orientation => MediaQuery.of(context).orientation;
+  Orientation get orientation => MediaQuery.of(context).orientation;
 
   @override
-  get screenSize => MediaQuery.of(context).size;
+  Size get screenSize => MediaQuery.of(context).size;
 
   @override
-  get deviceType => getDeviceType(MediaQuery.of(context));
+  DeviceScreenType get deviceType => getDeviceType(MediaQuery.of(context));
 }

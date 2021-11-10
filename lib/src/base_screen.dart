@@ -5,11 +5,11 @@ import 'package:screen_layout/src/enums.dart';
 // Base
 abstract class BaseScreenState<W extends StatefulWidget> extends State<W>
     implements BaseState {
-  get screenSize;
+  Size get screenSize;
 
-  get orientation;
+  Orientation get orientation;
 
-  get deviceType;
+  DeviceScreenType get deviceType;
 }
 
 abstract class BaseWidgetState<W extends StatelessWidget> implements BaseState {
