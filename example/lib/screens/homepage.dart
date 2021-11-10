@@ -117,8 +117,7 @@ class _HomePageBodyState extends AppScreenState<HomePageBody> {
           height: 35,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: deviceUtils.screenSize.width * 0.15, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 0.15.w, vertical: 20),
           child: Text(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
             style: TextStyle(
@@ -168,8 +167,7 @@ class _HomePageBodyState extends AppScreenState<HomePageBody> {
   Widget buildDesktopPortraitLayout(
       BuildContext context, DeviceUtils deviceUtils) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: deviceUtils.screenSize.width * 0.1),
+      padding: EdgeInsets.symmetric(horizontal: 0.1.w),
       child: Row(
         children: [
           Expanded(

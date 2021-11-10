@@ -29,8 +29,7 @@ class AppBarTitle extends AppWidgetState {
   Widget buildTabletPortraitLayout(
       BuildContext context, DeviceUtils deviceUtils) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: deviceUtils.screenSize.width * 0.1),
+      padding: EdgeInsets.symmetric(horizontal: 0.1.w),
       child: Row(
         children: [
           const Text(
@@ -54,8 +53,7 @@ class AppBarTitle extends AppWidgetState {
   Widget buildDesktopPortraitLayout(
       BuildContext context, DeviceUtils deviceUtils) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: deviceUtils.screenSize.width * 0.15),
+      padding: EdgeInsets.symmetric(horizontal: 0.15.w),
       child: Row(
         children: [
           const Text(

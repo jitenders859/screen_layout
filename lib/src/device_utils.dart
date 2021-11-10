@@ -1,37 +1,75 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:screen_layout/src/enums.dart';
+part of screen_layout;
 
 class DeviceUtils {
-  final DeviceScreenType screenType;
+  final ScreenType screenType;
   final Size screenSize;
   final Orientation orientation;
+  final DeviceType deviceType;
 
   DeviceUtils(
       {required this.screenType,
+      required this.deviceType,
       required this.screenSize,
       required this.orientation});
 }
 
-DeviceScreenType getDeviceType(MediaQueryData mediaQuery) {
-  double deviceWidth = mediaQuery.size.shortestSide;
+DeviceType getDeviceType() {
+  DeviceType _deviceType;
+
+  // Gets DeviceType
+  if (kIsWeb) {
+    _deviceType = DeviceType.web;
+  } else {
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        _deviceType = DeviceType.android;
+        break;
+      case TargetPlatform.iOS:
+        _deviceType = DeviceType.ios;
+        break;
+      case TargetPlatform.windows:
+        _deviceType = DeviceType.windows;
+        break;
+      case TargetPlatform.macOS:
+        _deviceType = DeviceType.mac;
+        break;
+      case TargetPlatform.linux:
+        _deviceType = DeviceType.linux;
+        break;
+      case TargetPlatform.fuchsia:
+        _deviceType = DeviceType.fuschia;
+        break;
+    }
+  }
+
+  return _deviceType;
+}
+
+ScreenType getScreenType(BoxConstraints constraints) {
+  late double deviceWidth;
+
+  if (constraints.maxWidth < constraints.maxHeight) {
+    deviceWidth = constraints.maxWidth;
+  } else {
+    deviceWidth = constraints.maxHeight;
+  }
 
   if (kIsWeb) {
-    deviceWidth = mediaQuery.size.width;
+    deviceWidth = constraints.maxWidth;
   }
 
   // If no user defined definitions are passed through use the defaults
   if (deviceWidth > 1050) {
-    return DeviceScreenType.desktop;
+    return ScreenType.desktop;
   }
 
   if (deviceWidth > 600) {
-    return DeviceScreenType.tablet;
+    return ScreenType.tablet;
   }
 
   if (deviceWidth < 280) {
-    return DeviceScreenType.watch;
+    return ScreenType.watch;
   }
 
-  return DeviceScreenType.mobile;
+  return ScreenType.mobile;
 }

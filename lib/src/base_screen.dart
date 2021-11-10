@@ -1,16 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:screen_layout/src/device_utils.dart';
-import 'package:screen_layout/src/enums.dart';
+part of screen_layout;
 
-// Base
 abstract class BaseScreenState<W extends StatefulWidget> extends State<W>
-    implements BaseState {
-  Size get screenSize;
-
-  Orientation get orientation;
-
-  DeviceScreenType get deviceType;
-}
+    implements BaseState {}
 
 abstract class BaseWidgetState<W extends StatelessWidget> implements BaseState {
 }
